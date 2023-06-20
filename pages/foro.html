@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigitPlay | Club</title>
+    <link rel="preload" href="../css/normalize.css" as="style">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="preload" href="../css/style.css" as="style">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <nav class="logo-principal">
+            <a>
+                <img src="../images/Logo.png" alt="Logo de DigitPlay" width="50">
+            </a>
+        </nav>
+
+        <h1 class="titulo">DigitPlay<span> Cyber Gamer </span></h1>
+        <!-- navbar -->
+        <div class="nav-bg">
+            <nav class="navegacion-principal contenedor">
+                <a href="../index.html">Inicio</a></li>
+                <a href="../pages/club.html">Club</a></li>
+                <a href="../pages/nosotros.html">Nosotros</a></li>
+                <a href="#">Productos</a></li>
+                <a href="../pages/foro.html">Foro</a></li>
+            </nav>
+        </div>
+
+    </header>
+
+    <main class="contenedor sombra">
+
+        <p>
+            Bienvenido al <strong>Foro DigitPlay</strong>. A continuación, te explicamos cómo utilizarlo:
+        
+            1. Para crear un nuevo tema, haz clic en el botón "Crear un nuevo tema". Se mostrará un formulario donde puedes ingresar el título, tu nombre como autor y el contenido del tema. Haz clic en "Crear" para agregar el tema al foro.
+        
+            2. Los temas existentes se mostrarán debajo del formulario de creación. Cada tema incluirá el título, el nombre del autor y una breve descripción del contenido.
+        
+            3. Si deseas ver los detalles de un tema, simplemente haz clic en él. Se mostrará una alerta con el título, el autor y el contenido completo del tema.
+        
+            4. Si en algún momento deseas cancelar la creación de un nuevo tema, haz clic en el botón "Cancelar" en el formulario de creación. Los campos del formulario se borrarán y el formulario se ocultará.
+        
+            ¡Explora los temas existentes, crea nuevos temas y disfruta participando en el foro!
+        </p>
+
+        <<h1>Foro DigitPlay</h1>
+    
+        <div id="nuevoTemaForm" style="display: none;">
+            <h2>Crear un nuevo tema</h2>
+            <label>Título:</label>
+            <input type="text" id="tituloInput"><br>
+            <label>Autor:</label>
+            <input type="text" id="autorInput"><br>
+            <label>Contenido:</label><br>
+            <textarea id="contenidoInput" rows="4" cols="50"></textarea><br>
+            <button onclick="crearTema()">Crear</button>
+            <button onclick="cancelar()">Cancelar</button>
+        </div>
+        
+        <button onclick="mostrarFormulario()">Crear un nuevo tema</button>
+        
+        <div id="temasContainer"></div>
+        
+        <script>
+            var topics = [];
+    
+            function crearTema() {
+                var titulo = document.getElementById("tituloInput").value;
+                var autor = document.getElementById("autorInput").value;
+                var contenido = document.getElementById("contenidoInput").value;
+                
+                var tema = {
+                    titulo: titulo,
+                    autor: autor,
+                    contenido: contenido
+                };
+                
+                topics.push(tema);
+                actualizarTemas();
+                ocultarFormulario();
+            }
+    
+            function mostrarFormulario() {
+                document.getElementById("nuevoTemaForm").style.display = "block";
+            }
+    
+            function ocultarFormulario() {
+                document.getElementById("tituloInput").value = "";
+                document.getElementById("autorInput").value = "";
+                document.getElementById("contenidoInput").value = "";
+                
+                document.getElementById("nuevoTemaForm").style.display = "none";
+            }
+    
+            function actualizarTemas() {
+                var temasContainer = document.getElementById("temasContainer");
+                temasContainer.innerHTML = "";
+                
+                if (topics.length === 0) {
+                    var mensaje = document.createElement("p");
+                    mensaje.innerHTML = "No hay temas en el foro.";
+                    temasContainer.appendChild(mensaje);
+                } else {
+                    for (var i = 0; i < topics.length; i++) {
+                        var tema = topics[i];
+                        
+                        var temaDiv = document.createElement("div");
+                        temaDiv.classList.add("tema");
+                        
+                        var titulo = document.createElement("h3");
+                        titulo.innerHTML = tema.titulo;
+                        temaDiv.appendChild(titulo);
+                        
+                        var autor = document.createElement("p");
+                        autor.innerHTML = "Autor: " + tema.autor;
+                        temaDiv.appendChild(autor);
+                        
+                        var contenido = document.createElement("p");
+                        contenido.innerHTML = "Contenido: " + tema.contenido;
+                        temaDiv.appendChild(contenido);
+                        
+                        temasContainer.appendChild(temaDiv);
+                        
+                        // Agregar evento clic para ver detalles del tema
+                        temaDiv.addEventListener("click", function(index) {
+                            return function() {
+                                verTema(index);
+                            }
+                        }(i));
+                    }
+                }
+            }
+    
+            function verTema(index) {
+                var tema = topics[index];
+                alert("Detalles del tema:\n\nTítulo: " + tema.titulo + "\nAutor: " + tema.autor + "\nContenido: " + tema.contenido);
+            }
+        </script>
+    </main>
+
+    <!-- Footer -->
+    <footer class="contenedor">
+
+
+        <h4>Síguenos</h4>
+        <div class="redes">
+            <a href="#"><img width="50" src="../images/facebook.png" alt="Logo de Facebook"></a></li>
+            <a href="#"><img width="50" src="../images/Twitter.png" alt="Logo de Twitter"></a></li>
+            <a href="#"><img width="50" src="../images/instagram.png" alt="Logo de instagram"></a></li>
+            <a href="#"><img width="50" src="../images/tik-tok.png" alt="Logo de Tik tok"></a></li>
+        </div>
+
+        <div class="nav-fn">
+            <a href="#">Volver arriba</a>
+        </div>
+        <p>Copyright © 2023 DigitPlay</p>
+
+
+    </footer>
+
+</body>
+
+</html>
