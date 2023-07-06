@@ -1,0 +1,25 @@
+// abstracts
+@import "./abstracts/mixing";
+
+// base
+@import "base/colores";
+@import "base/globales";
+@import "base/reset";
+@import "base/titulo";
+@import "base/typography";
+
+//layouts
+@import "./layout/navbar";
+@import "./layout/hero";
+@import "./layout/servicios";
+@import "./layout/footer";
+@import "./layout/img";
+
+// media
+@import "./media/tablet.scss"
+
+ 
+  
+  
+  
+  

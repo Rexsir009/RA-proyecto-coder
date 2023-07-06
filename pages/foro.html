@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DigitPlay | Club</title>
+    <title>DigitPlay | Foro</title>
     <link rel="preload" href="../css/normalize.css" as="style">
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="preload" href="../css/style.css" as="style">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../styles/css/style.css">
 </head>
 
 <body>
@@ -28,7 +28,7 @@
                 <a href="../index.html">Inicio</a></li>
                 <a href="../pages/club.html">Club</a></li>
                 <a href="../pages/nosotros.html">Nosotros</a></li>
-                <a href="#">Productos</a></li>
+                <a href="../pages/productos.html">Productos</a></li>
                 <a href="../pages/foro.html">Foro</a></li>
             </nav>
         </div>
@@ -69,81 +69,6 @@
         
         <div id="temasContainer"></div>
         
-        <script>
-            var topics = [];
-    
-            function crearTema() {
-                var titulo = document.getElementById("tituloInput").value;
-                var autor = document.getElementById("autorInput").value;
-                var contenido = document.getElementById("contenidoInput").value;
-                
-                var tema = {
-                    titulo: titulo,
-                    autor: autor,
-                    contenido: contenido
-                };
-                
-                topics.push(tema);
-                actualizarTemas();
-                ocultarFormulario();
-            }
-    
-            function mostrarFormulario() {
-                document.getElementById("nuevoTemaForm").style.display = "block";
-            }
-    
-            function ocultarFormulario() {
-                document.getElementById("tituloInput").value = "";
-                document.getElementById("autorInput").value = "";
-                document.getElementById("contenidoInput").value = "";
-                
-                document.getElementById("nuevoTemaForm").style.display = "none";
-            }
-    
-            function actualizarTemas() {
-                var temasContainer = document.getElementById("temasContainer");
-                temasContainer.innerHTML = "";
-                
-                if (topics.length === 0) {
-                    var mensaje = document.createElement("p");
-                    mensaje.innerHTML = "No hay temas en el foro.";
-                    temasContainer.appendChild(mensaje);
-                } else {
-                    for (var i = 0; i < topics.length; i++) {
-                        var tema = topics[i];
-                        
-                        var temaDiv = document.createElement("div");
-                        temaDiv.classList.add("tema");
-                        
-                        var titulo = document.createElement("h3");
-                        titulo.innerHTML = tema.titulo;
-                        temaDiv.appendChild(titulo);
-                        
-                        var autor = document.createElement("p");
-                        autor.innerHTML = "Autor: " + tema.autor;
-                        temaDiv.appendChild(autor);
-                        
-                        var contenido = document.createElement("p");
-                        contenido.innerHTML = "Contenido: " + tema.contenido;
-                        temaDiv.appendChild(contenido);
-                        
-                        temasContainer.appendChild(temaDiv);
-                        
-                        // Agregar evento clic para ver detalles del tema
-                        temaDiv.addEventListener("click", function(index) {
-                            return function() {
-                                verTema(index);
-                            }
-                        }(i));
-                    }
-                }
-            }
-    
-            function verTema(index) {
-                var tema = topics[index];
-                alert("Detalles del tema:\n\nTítulo: " + tema.titulo + "\nAutor: " + tema.autor + "\nContenido: " + tema.contenido);
-            }
-        </script>
     </main>
 
     <!-- Footer -->
@@ -152,10 +77,10 @@
 
         <h4>Síguenos</h4>
         <div class="redes">
-            <a href="#"><img width="50" src="../images/facebook.png" alt="Logo de Facebook"></a></li>
-            <a href="#"><img width="50" src="../images/Twitter.png" alt="Logo de Twitter"></a></li>
-            <a href="#"><img width="50" src="../images/instagram.png" alt="Logo de instagram"></a></li>
-            <a href="#"><img width="50" src="../images/tik-tok.png" alt="Logo de Tik tok"></a></li>
+            <a href="https://es-la.facebook.com/" target="_blank"><img width="50" src="../images/facebook.png" alt="Logo de Facebook"></a></li>
+            <a href="https://twitter.com/" target="_blank"><img width="50" src="../images/Twitter.png" alt="Logo de Twitter" target="_blank"></a></li>
+            <a href="https://www.instagram.com/" target="_blank"><img width="50" src="../images/instagram.png" alt="Logo de instagram" target="_blank"></a></li>
+            <a href="https://www.tiktok.com/" target="_blank"><img width="50" src="../images/tik-tok.png" alt="Logo de Tik tok" target="_blank"></a></li>
         </div>
 
         <div class="nav-fn">
@@ -166,6 +91,81 @@
 
     </footer>
 
+    <script>
+        var topics = [];
+
+        function crearTema() {
+            var titulo = document.getElementById("tituloInput").value;
+            var autor = document.getElementById("autorInput").value;
+            var contenido = document.getElementById("contenidoInput").value;
+            
+            var tema = {
+                titulo: titulo,
+                autor: autor,
+                contenido: contenido
+            };
+            
+            topics.push(tema);
+            actualizarTemas();
+            ocultarFormulario();
+        }
+
+        function mostrarFormulario() {
+            document.getElementById("nuevoTemaForm").style.display = "block";
+        }
+
+        function ocultarFormulario() {
+            document.getElementById("tituloInput").value = "";
+            document.getElementById("autorInput").value = "";
+            document.getElementById("contenidoInput").value = "";
+            
+            document.getElementById("nuevoTemaForm").style.display = "none";
+        }
+
+        function actualizarTemas() {
+            var temasContainer = document.getElementById("temasContainer");
+            temasContainer.innerHTML = "";
+            
+            if (topics.length === 0) {
+                var mensaje = document.createElement("p");
+                mensaje.innerHTML = "No hay temas en el foro.";
+                temasContainer.appendChild(mensaje);
+            } else {
+                for (var i = 0; i < topics.length; i++) {
+                    var tema = topics[i];
+                    
+                    var temaDiv = document.createElement("div");
+                    temaDiv.classList.add("tema");
+                    
+                    var titulo = document.createElement("h3");
+                    titulo.innerHTML = tema.titulo;
+                    temaDiv.appendChild(titulo);
+                    
+                    var autor = document.createElement("p");
+                    autor.innerHTML = "Autor: " + tema.autor;
+                    temaDiv.appendChild(autor);
+                    
+                    var contenido = document.createElement("p");
+                    contenido.innerHTML = "Contenido: " + tema.contenido;
+                    temaDiv.appendChild(contenido);
+                    
+                    temasContainer.appendChild(temaDiv);
+                    
+                    // Agregar evento clic para ver detalles del tema
+                    temaDiv.addEventListener("click", function(index) {
+                        return function() {
+                            verTema(index);
+                        }
+                    }(i));
+                }
+            }
+        }
+
+        function verTema(index) {
+            var tema = topics[index];
+            alert("Detalles del tema:\n\nTítulo: " + tema.titulo + "\nAutor: " + tema.autor + "\nContenido: " + tema.contenido);
+        }
+    </script>
 </body>
 
 </html>
