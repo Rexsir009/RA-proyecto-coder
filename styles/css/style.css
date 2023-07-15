@@ -96,7 +96,7 @@ h1, h2, h3, h4, p {
 
 /* Hero */
 .hero {
-  background-image: url(../images/Juegos\ pc.jpg);
+  background-image: url(../../images/Juegos\ pc.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   height: 537px;
